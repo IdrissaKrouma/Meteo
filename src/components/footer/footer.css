@@ -1,0 +1,118 @@
+.myfooter{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #FFFEFE;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.footer-left{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.footer-right{
+    display: inline-flex;
+    flex-direction: row;
+    align-self: flex-end;
+    align-items: center;
+    gap: 10px;
+    font-family: "Kelly Slab", sans-serif;
+}
+.left-low{
+    display: flex;
+    flex-direction: row;
+}
+
+.link {
+    padding: 10px;
+    border-radius: 1.5rem;
+    display: inline-block; /* Assure que le padding et background-color fonctionnent correctement */
+}
+
+.link:hover {
+    background-color: #E9E9E8;
+}
+
+.link:hover .icons {
+    transform: rotate(360deg); /* Définit la rotation à 360 degrés sur hover */
+}
+.text-bare{
+    font-size: 25px;
+    padding-top: 6px;
+}
+
+.orbit{
+  display: inline-flex;
+  align-items:last baseline;
+}
+/* .orbit {
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  width: 60%;
+  height: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbit-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 2s ease-out; 
+}
+
+.btn1, .btn2, .btn3, .btn4, .btn5, .btn6 {
+  transform: translateY(-200%); 
+}
+
+.active .btn1 {
+  top: 35%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+   background-color: #ff6347; 
+}
+
+.active .btn2 {
+  top: 50%;
+  left: 11%;
+  transform: translate(-50%, -50%);
+   background-color: #4682b4; 
+}
+
+.active .btn3 {
+  top: 90%;
+  left: 7%;
+  transform: translate(-50%, -50%);
+   background-color: #32cd32; 
+}
+
+.active .btn4 {
+  top: 81%;
+  left: 92%;
+  transform: translate(-50%, -50%);
+   background-color: #4682b4; 
+}
+
+.active .btn5 {
+  top: 47%;
+  left: 98%;
+  transform: translate(-50%, -50%);
+   background-color: #32cd32; 
+}
+
+.active .btn6 {
+  top: 71%;
+  left: 93%;
+  transform: translate(-50%, -50%);
+   background-color: #32cd32; 
+}
+
+
+
+
+ */

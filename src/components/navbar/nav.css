@@ -1,0 +1,33 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right:0 ;
+    left: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding: 1%;
+    background-color: #FFFEFE;
+    font-family: "Kaushan Script", sans-serif;
+}
+#navbar-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.city{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 250px;
+    text-align: center;
+    font-size: 20px;
+}
+
+  
