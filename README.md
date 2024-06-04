@@ -1,5 +1,8 @@
 
-
+npx create-react-app weather
+npm install @reduxjs/toolkit
+npm install axios
+npm install tailwindcss@latest
 
 # Getting Started with Create React App
 
