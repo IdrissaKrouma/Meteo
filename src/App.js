@@ -1,13 +1,13 @@
-import './App.css';
-import FormatWeathherDataDaily from './utils/formatWeatherDataDaily.js';
+import './index.js';
+import FormatWeathherDataDaily from './services/formatWeatherDataDaily.js';
 import { useState, useEffect, useCallback } from 'react';
-import Navbar from './components/navbar/nav';
-import BodyHeader from './components/body/bodyHeader';
-import MyFooter from './components/footer/footer';
-import BodyList from './components/body/bodyList';
-import villesAuth from "./utils/villes.js";
+import Navbar from './components/nav';
+import BodyHeader from './components/bodyHeader';
+import MyFooter from './components/footer';
+import BodyList from './components/bodyList';
+import villesAuth from "./services/villes.js";
 import { connect } from 'react-redux';
-import { icons } from './utils/emojis.js';
+import { icons } from './services/emojis.js';
 
 
 function App({ inputValue }) {
@@ -18,6 +18,7 @@ function App({ inputValue }) {
   const [weatherUnits, setWeatherUnits] = useState({});
   const [weatherData, setWeatherData] = useState([]);
 
+  //Recuperer la posiion du visiteur
   const getGeolocalisation = useCallback(async () => {
     try {
       if (!navigator.geolocation) {
@@ -35,6 +36,7 @@ function App({ inputValue }) {
     }
   }, []);
 
+  // Renvoie a partir de url et le nom du lieu les données sous forme formate
   const fetchweather = useCallback(async (url, cityName) => {
     try {
       const res = await fetch(url);
@@ -57,6 +59,7 @@ function App({ inputValue }) {
     }
   }, []);
 
+  // Recuperer le nom de ville à travers la position
   const fetchCityName = useCallback(async () => {
     try {
       const geocodingUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${geoloc.lat}&lon=${geoloc.lon}&zoom=10&addressdetails=1`;
@@ -75,6 +78,7 @@ function App({ inputValue }) {
     }
   }, [geoloc.lat, geoloc.lon]);
 
+  // Rechercher les données à partir de la poition du visteur
   const fetchDatabyPosition = useCallback(async (lat, lon, cityName) => {
     try {
       const result = await fetchweather(
@@ -92,6 +96,7 @@ function App({ inputValue }) {
     }
   }, [fetchweather]);
 
+  // Rechercher les données à partir pour une ville donné
   const fetchDataByCityName = useCallback(async () => {
     const geocodingUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${inputValue}`;
     if (!inputValue) {
@@ -115,6 +120,7 @@ function App({ inputValue }) {
     }
   }, [inputValue, fetchDatabyPosition]);
 
+  // Rechercher les données pour une liiste de ville
   const fetchAuth = useCallback(async () => {
     const promises = villesAuth.map(async (elt) => {
       const result = await fetchweather(
@@ -133,6 +139,7 @@ function App({ inputValue }) {
     }
   }, [fetchweather]);
 
+  // Rechercher les données à partir de la poition du visteur
   const fetchMainPrediction = useCallback(() => {
     if (!inputValue) {
       fetchDatabyPosition(geoloc.lat, geoloc.lon, geoloc.city);
@@ -164,25 +171,26 @@ function App({ inputValue }) {
 
   if (isLoading) {
     return (
-      <div className='loading'>
-        <img className='logo' src='./logo-meteo1.png' alt='NOT FOUND'/>
+      <div className='flex justify-center items-center h-screen bg-gray-200'>
+        <img className='w-24 h-24 animate-logoAnimation' src='./logo-meteo1.png' alt='NOT FOUND'/>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className='error'>
-        <img className='icons-error' src={icons.error} alt='NOT FOUND' />
+      <div className='flex flex-col items-center h-screen text-2xl mt-[15%] font-kelly-slab'>
+        <img className="icons-error w-[20vh] h-[20vh]" src={icons.error} alt='NOT FOUND' />
         <h1 className='temp-now'>ERROR...</h1>
       </div>
     );
   }
 
   return (
-    <div className="App">
+    <div className="App flex flex-col justify-center m-0 p-0 box-border gap-2">
       <Navbar />
-      <br />
+      <br></br>
+      <br className='block sm:hidden'></br>
       <BodyHeader dataToday={weatherData[0]} units={weatherUnits} />
       <br />
       <BodyList dataPrevision={weatherData.slice(1)} dataAuth={Auth} units={weatherUnits} />
